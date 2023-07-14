@@ -2,22 +2,22 @@ import React from "react";
 
 class AddContact extends React.Component {
   state = {
-    name: " ", 
+    name: " ",
     email: " ",
   };
-   add = (e) => {
+  add = (e) => {
     e.preventDefault();
-    if (this.state.name === "" && this.state.email === "") {
+    if (this.state.name === " " && this.state.email === " ") {
       alert("all the fields are mandatory!");
       return;
     }
     console.log(this.state);
-  }; 
+  };
   render() {
     return (
       <div className="ui main">
         <h2> Add Contact</h2>
-        <from className="ui form" onSubmit={this.add}>
+        <form className="ui form" onSubmit={this.add}>
           <div className="field">
             <label>Name</label>
             <input
@@ -39,7 +39,7 @@ class AddContact extends React.Component {
             />
           </div>
           <button className="ui button blue"> Add</button>
-        </from>
+        </form>
       </div>
     );
   }
