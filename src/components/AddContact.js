@@ -13,6 +13,7 @@ class AddContact extends React.Component {
     }
     this.props.addContactHandler(this.state);
     this.setState({ name: "", email: "" });
+
   };
   render() {
     return (
@@ -23,6 +24,7 @@ class AddContact extends React.Component {
             <label>Name</label>
             <input
               type="text"
+              value={this.state.name}
               name="name"
               placeholder="Name"
               onChange={(e) => this.setState({ name: e.target.value })}
@@ -32,6 +34,7 @@ class AddContact extends React.Component {
             <label>Email</label>
             <input
               type="text"
+              value ={this.state.email}
               name="email"
               placeholder="Email"
               onChange={(e) => this.setState({ email: e.target.value })}
