@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import "./App.css";
 import Header from "./Header";
@@ -10,7 +10,7 @@ function App() {
   const LOCAL_STORAGE_KEY = "contacts";
   const [contacts, setContacts] = useState([]);
   const addContactHandler = (contact) => {
-    // console.log(contact);
+    console.log(contact);
     setContacts([...contacts, { id: uuid(), ...contact }]);
   };
   const removeContactHandler = (id) => {
@@ -21,27 +21,42 @@ function App() {
   };
 
   useEffect(() => {
-    const retriveContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    if (retriveContacts) setContacts(retriveContacts);
+    const retrieveContacts = JSON.parse(
+      localStorage.getItem(LOCAL_STORAGE_KEY)
+    );
+    if (retrieveContacts) setContacts(retrieveContacts);
   }, []);
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
-  }, [contacts]); 
+  }, [contacts]);
 
   return (
     <div className="ui container">
-        <Router>
-        <Header/>
-          <Routes>
-            <Route path="/" component={<ContactList />} />
-            <Route path="/add" component={<AddContact />} />
-          </Routes>
-          {/* 
-        <AddContact addContactHandler={addContactHandler} />
-        <ContactList contacts={contacts} getContactId={removeContactHandler} /> */}
-        </Router>
+      <Router>
+        <Header />
+        <Switch>
+          {/* <Route path="/" exact component={()=> <ContactList contacts= {contacts} getContactId= { removeContactHandler}/>} /> */}
+          <Route
+            path="/"
+            exact
+            render={(props) => (
+              <ContactList
+                {...props}
+                contacts={contacts}
+                getContactId={removeContactHandler}
+              />
+            )}
+          />
+          <Route
+            path="/add"
+            component={(props) => (
+              <AddContact addContactHandler={addContactHandler} />
+            )}
+          />
+          {/* <Route path="/add" render={(props) => ( <AddContact {...props}addContactHandler={addContactHandler} /> )} /> */}
+        </Switch>
+      </Router>
     </div>
-
   );
 }
 
