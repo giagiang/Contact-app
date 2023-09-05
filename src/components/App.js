@@ -35,13 +35,12 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          {/* <Route path="/" exact component={()=> <ContactList contacts= {contacts} getContactId= { removeContactHandler}/>} /> */}
           <Route
             path="/"
             exact
             render={(props) => (
               <ContactList
-                {...props}
+                {...props}  
                 contacts={contacts}
                 getContactId={removeContactHandler}
               />
@@ -49,11 +48,10 @@ function App() {
           />
           <Route
             path="/add"
-            component={(props) => (
-              <AddContact addContactHandler={addContactHandler} />
+            render={(props) => (
+              <AddContact {...props} addContactHandler={addContactHandler} />
             )}
           />
-          {/* <Route path="/add" render={(props) => ( <AddContact {...props}addContactHandler={addContactHandler} /> )} /> */}
         </Switch>
       </Router>
     </div>
@@ -61,3 +59,5 @@ function App() {
 }
 
 export default App;
+
+
