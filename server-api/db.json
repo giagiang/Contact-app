@@ -1,0 +1,16 @@
+{
+    "contact" :[
+        {
+            "id": "3bb8b017-e880-449e-8060-5814b22cd8f1",
+            "name": "bánh bao",
+            "email": "ricciardo@gmail.com"
+        },
+        {
+            "id": "53c4b1df-b9e2-4d01-a29c-01384f13d13a",
+            "name": "giang ", 
+            "email": "giang@gmail.com"
+            
+             
+        }
+    ]
+}

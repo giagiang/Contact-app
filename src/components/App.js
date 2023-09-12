@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { v4 as uuid } from "uuid";
+import api from '../api/contacts';
 import "./App.css";
 import Header from "./Header";
 import AddContact from "./AddContact";
@@ -22,10 +23,10 @@ function App() {
   };
 
   useEffect(() => {
-    const retrieveContacts = JSON.parse(
-      localStorage.getItem(LOCAL_STORAGE_KEY)
-    );
-    if (retrieveContacts) setContacts(retrieveContacts);
+    // const retrieveContacts = JSON.parse(
+    //   localStorage.getItem(LOCAL_STORAGE_KEY)
+    // );
+    // if (retrieveContacts) setContacts(retrieveContacts);
   }, []);
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
@@ -61,4 +62,3 @@ function App() {
 }
 
 export default App;
- 
