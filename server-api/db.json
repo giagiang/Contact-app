@@ -1,16 +1,19 @@
 {
-    "contact" :[
-        {
-            "id": "3bb8b017-e880-449e-8060-5814b22cd8f1",
-            "name": "bánh bao",
-            "email": "ricciardo@gmail.com"
-        },
-        {
-            "id": "53c4b1df-b9e2-4d01-a29c-01384f13d13a",
-            "name": "giang ", 
-            "email": "giang@gmail.com"
-            
-             
-        }
-    ]
+  "contact": [
+    {
+      "id": "53c4b1df-b9e2-4d01-a29c-01384f13d13a",
+      "name": "giang ",
+      "email": "giang@gmail.com"
+    },
+    {
+      "id": "3501cfd6-1515-4e88-b198-bb59a3f5b2fe",
+      "name": "javascript",
+      "email": "giang@yahoo.com "
+    },
+    {
+      "id": "73856cf0-afea-4836-a3d6-9c99765d984f",
+      "name": "gianggiasdasd",
+      "email": "giang@yahoo.com "
+    }
+  ]
 }

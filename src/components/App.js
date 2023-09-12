@@ -8,28 +8,51 @@ import AddContact from "./AddContact";
 import ContactList from "./ContactList";
 import ContactDetail from "./ContactDetail";
 
+
 function App() {
   const LOCAL_STORAGE_KEY = "contacts";
   const [contacts, setContacts] = useState([]);
-  const addContactHandler = (contact) => {
+
+  //RetrieveContacts 
+    const retrieveContact= async () =>{
+      const response = await api.get("/contact");
+      // console.log("contacts", response);
+      return response.data;
+    };
+
+  const addContactHandler = async (contact) => {
     console.log(contact);
-    setContacts([...contacts, { id: uuid(), ...contact }]);
+    const request = {
+      id:uuid(),
+      ...contact
+    }
+    const response = await api.post("/contact", request)
+    setContacts([...contacts, response.data]);
   };
-  const removeContactHandler = (id) => {
+  const removeContactHandler = async (id) => {
+    await api.delete(`./contact/${id}`);
     const newContactList = contacts.filter((contact) => {
       return contact.id !== id;
     });
     setContacts(newContactList);
   };
 
-  useEffect(() => {
+  useEffect( () => {
+    console.log('use effect get all contact run!!')
     // const retrieveContacts = JSON.parse(
     //   localStorage.getItem(LOCAL_STORAGE_KEY)
     // );
     // if (retrieveContacts) setContacts(retrieveContacts);
+    const getAllContacts = async ()=>{
+      const allContacts =  await retrieveContact();
+      if(allContacts) setContacts(allContacts);
+    };
+     getAllContacts();
+
   }, []);
+
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
+    // localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
   }, [contacts]);
 
   return (
