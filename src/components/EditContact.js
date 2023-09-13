@@ -3,7 +3,7 @@ import React from "react";
 class EditContact extends React.Component {
   constructor(props) {
     super(props);
-    const {id,name,email}=  props.location.state.contact;
+    const {id,name,email} = props.location.state.contact;
     this.state = {
       id,
       name,

@@ -32,7 +32,7 @@ function App() {
     setContacts([response.data, ...contacts]);
   };
   const updateContactHandler = async (contact) => {
-    const response = await api.put(`/contacts/${contact.id}`, contact);
+    const response = await api.put(`/contact/${contact.id}`, contact);
     const { id, name, email } = response.data;
     setContacts(
       contacts.map((contact) => {

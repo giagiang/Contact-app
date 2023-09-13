@@ -1,19 +1,24 @@
 {
   "contact": [
     {
-      "id": "53c4b1df-b9e2-4d01-a29c-01384f13d13a",
-      "name": "giang ",
-      "email": "giang@gmail.com"
-    },
-    {
       "id": "3501cfd6-1515-4e88-b198-bb59a3f5b2fe",
       "name": "javascript",
-      "email": "giang@yahoo.com "
+      "email": "giang@yahoo.com"
     },
     {
       "id": "1b26dab6-7dc2-4458-ad11-cfd85169bdc2",
       "name": "hong",
       "email": "655@gmail.com"
+    },
+    {
+      "id": "09067862-4c19-482e-84c2-e74d21dd2782",
+      "name": "ricG",
+      "email": "ricG@gmail.com"
+    },
+    {
+      "id": "28fe91eb-3d69-4116-a582-f2493f561790",
+      "name": "hêhhehe",
+      "email": "giang6789@gmail.com"
     }
   ]
 }
