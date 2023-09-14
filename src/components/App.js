@@ -18,7 +18,6 @@ function App() {
   //RetrieveContacts
   const retrieveContact = async () => {
     const response = await api.get("/contact");
-    // console.log("contacts", response);
     return response.data;
   };
 
@@ -75,7 +74,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
   }, [contacts]);
 
   return (
