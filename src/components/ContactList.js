@@ -1,17 +1,23 @@
-import React, {useRef} from "react";
+import React, {useRef,useEffect} from "react"; 
 import { Link } from "react-router-dom";
 import ContactCard from "./ContactCard";
+import { useContactsCrud } from "../context/ContactsCrudContext";
+
 
 const ContactList = (props) => {
+  const{contacts, retrieveContacts} = useContactsCrud();
   const inputEl = useRef("");
-  const deleteContactHandler = (id) => {
-    props.getContactId(id);
-  };
-  const renderContactList = props.contacts.map((contact) => {
+  // const deleteContactHandler = (id) => {
+  //   props.getContactId(id);
+  // };
+
+  useEffect(()=>{
+    retrieveContacts();
+  },[]);
+  const renderContactList = contacts.map((contact) => {
     return (
       <ContactCard
         contact={contact}
-        clickHandler={deleteContactHandler}
         key={contact.id}
       />
     );
