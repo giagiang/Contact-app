@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { v4 as uuid } from "uuid";
 import api from "../api/contacts";
 import "./App.css";
 import Header from "./Header";
@@ -16,17 +15,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResult, setSearchResult] = useState([]);
 
-  const addContactHandler = async (contact) => {
-    console.log("input contact,", contact);
-    const data = {
-      id: uuid(),
-      ...contact,
-    };
-    const response = await api.post("/contact", data);
-    console.log("output response", response);
 
-    setContacts([response.data, ...contacts]);
-  };
   const updateContactHandler = async (contact) => {
     const response = await api.put(`/contact/${contact.id}`, contact);
     const { id, name, email } = response.data;
