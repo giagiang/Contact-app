@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import api from "../api/contacts";
+// import api from "../api/contacts";
+import retrieveContacts from "../api/contacts";
 import "./App.css";
 import Header from "./Header";
 import AddContact from "./AddContact";
@@ -15,16 +16,6 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResult, setSearchResult] = useState([]);
 
-
-  const updateContactHandler = async (contact) => {
-    const response = await api.put(`/contact/${contact.id}`, contact);
-    const { id, name, email } = response.data;
-    setContacts(
-      contacts.map((contact) => {
-        return contact.id === id ? { ...response.data } : contact;
-      })
-    );
-  };
  
   const searchHandler = (searchTerm) => {
     setSearchTerm(searchTerm);
@@ -41,14 +32,14 @@ function App() {
     }
   };
 
-  // useEffect(() => {
-  //   console.log("use effect get all contact run!!");
-  //   const getAllContacts = async () => {
-  //     const allContacts = await retrieveContact();
-  //     if (allContacts) setContacts(allContacts);
-  //   };
-  //   getAllContacts();
-  // }, []);
+  useEffect(() => {
+    // console.log("use effect get all contact run!!");
+    const getAllContacts = async () => {
+      const allContacts = await retrieveContacts();
+      if (allContacts) setContacts(allContacts);
+    };
+    getAllContacts();
+  }, []);
 
   useEffect(() => {}, [contacts]);
 

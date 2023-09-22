@@ -7,6 +7,9 @@ import { useContactsCrud } from "../context/ContactsCrudContext";
 const ContactList = (props) => {
   const{contacts, retrieveContacts} = useContactsCrud();
   const inputEl = useRef("");
+  const deleteConactHandler = (id )=>{
+    props.getContactId();
+  }
   // const deleteContactHandler = (id) => {
   //   props.getContactId(id);
   // };
@@ -14,6 +17,7 @@ const ContactList = (props) => {
   useEffect(()=>{
     retrieveContacts();
   },[]);
+  
   const renderContactList = contacts.map((contact) => {
     return (
       <ContactCard
