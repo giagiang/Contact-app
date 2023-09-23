@@ -26,9 +26,7 @@ const ContactCard = (props) => {
         style={{ color: "red", marginTop: "7px", marginLeft: "10px" }}
         onClick={() => deleteContact(id)}
       ></i>
-      <Link 
-      to={`/edit`}
-      state={{ contact: props.contact } }>
+      <Link to={`/edit`} state={{ contact: props.contact }}>
         <i
           className="edit alternate outline icon"
           style={{ color: "while", marginTop: "7px" }}
