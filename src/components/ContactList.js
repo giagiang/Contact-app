@@ -11,11 +11,6 @@ const ContactList = (props) => {
     searchResults,
     searchHandler,
   } = useContactsCrud();
-  // const inputEl = useRef("");
-
-  // const deleteContactHandler = (id) => {
-  //   props.getContactId(id);
-  // };
   console.log("searchREsult", searchResults);
   useEffect(() => {
     retrieveContacts();
@@ -26,11 +21,6 @@ const ContactList = (props) => {
     foundedContacts.map((contact) => {
       return <ContactCard contact={contact} key={contact.id} />;
     });
-  // if (searchResults === undefined) {
-  //   console.log("bị undefiend")
-  // } else {
-  //   console.log("k bị ")
-  // }
   const onUserSearch = (e) => {
     debugger;
     searchHandler(e.target.value);
