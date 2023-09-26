@@ -1,24 +1,32 @@
-import React, {useRef} from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ContactCard from "./ContactCard";
+import { useContactsCrud } from "../context/ContactsCrudContext";
 
 const ContactList = (props) => {
-  const inputEl = useRef("");
-  const deleteContactHandler = (id) => {
-    props.getContactId(id);
+  const {
+    contacts,
+    retrieveContacts,
+    searchTerm,
+    searchResults,
+    searchHandler,
+  } = useContactsCrud();
+  console.log("searchREsult", searchResults);
+  useEffect(() => {
+    retrieveContacts();
+  }, []);
+  const foundedContacts = searchTerm.length < 1 ? contacts : searchResults;
+  const renderContactList =
+    foundedContacts &&
+    foundedContacts.map((contact) => {
+      return <ContactCard contact={contact} key={contact.id} />;
+    });
+  const onUserSearch = (e) => {
+    debugger;
+    searchHandler(e.target.value);
   };
-  const renderContactList = props.contacts.map((contact) => {
-    return (
-      <ContactCard
-        contact={contact}
-        clickHandler={deleteContactHandler}
-        key={contact.id}
-      />
-    );
-  });
-  const getSearchTerm = () => {
-    props.searchKeyword(inputEl.current.value);
-  };
+  debugger;
+
   return (
     <div className="main">
       <h2>
@@ -30,12 +38,12 @@ const ContactList = (props) => {
       <div className="ui search">
         <div className="ui icon input">
           <input
-            ref = {inputEl}
+            // ref={inputEl}
             type="text"
             placeholder="Search Contacts"
             className="prompt"
-            value={props.term}
-            onChange={getSearchTerm}
+            value={searchTerm}
+            onChange={(e) => onUserSearch(e)}
           />
           <i className="search icon"></i>
         </div>
